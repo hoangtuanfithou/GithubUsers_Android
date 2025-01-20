@@ -11,11 +11,9 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class UserDetailViewModel : ViewModel() {
+class UserDetailViewModel(private val api: GitHubApiService = RetrofitClient.createService()) : ViewModel() {
     private val _user = MutableStateFlow<GitHubUser?>(null)
     val user = _user.asStateFlow()
-
-    private val api = RetrofitClient.createService()
 
     fun loadUserDetail(username: String) {
         viewModelScope.launch {
