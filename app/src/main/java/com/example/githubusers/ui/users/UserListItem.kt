@@ -31,7 +31,7 @@ fun UserListItem(user: GitHubUser, onClick: () -> Unit) {
                 model = user.avatarUrl,
                 contentDescription = null,
                 modifier = Modifier
-                    .size(48.dp)
+                    .size(64.dp)
                     .clip(CircleShape)
             )
 

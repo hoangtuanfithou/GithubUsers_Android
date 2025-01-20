@@ -30,8 +30,7 @@ fun UserInfoView(avatarUrl: String?,
             .padding(8.dp)
     ) {
         Row(
-            modifier = Modifier
-                .padding(vertical = 16.dp, horizontal = 16.dp),
+            modifier = Modifier.padding(16.dp),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             AsyncImage(
@@ -44,7 +43,8 @@ fun UserInfoView(avatarUrl: String?,
 
             Column(
                 modifier = Modifier.padding(8.dp),
-                horizontalAlignment = Alignment.Start
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
 
                 Text(
