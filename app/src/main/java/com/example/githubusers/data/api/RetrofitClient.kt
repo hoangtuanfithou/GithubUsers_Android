@@ -6,15 +6,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
     private const val BASE_URL = "https://api.github.com/"
-    private const val TOKEN = "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"
+    /// **Note:** Replace with github token https://github.com/settings/tokens or keep empty with limited access.
+    private const val TOKEN = ""
 
     fun createService(): GitHubApiService {
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val originalRequest = chain.request()
-                val newRequest = originalRequest.newBuilder()
-                    .header("Authorization", "token $TOKEN")
-                    .build()
+                val newRequestBuilder = originalRequest.newBuilder()
+
+                // Only add the Authorization header if TOKEN is not empty
+                if (TOKEN.isNotEmpty()) {
+                    newRequestBuilder.header("Authorization", "token $TOKEN")
+                }
+
+                val newRequest = newRequestBuilder.build()
                 chain.proceed(newRequest)
             }
             .build()
